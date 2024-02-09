@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function NavbarComponent() {
+function NavbarComponent(props) {
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark" fixed="top">
@@ -20,6 +20,7 @@ function NavbarComponent() {
             </Nav.Link>
           </Nav>
           <Button
+            onClick={props.setShowCart}
             variant="outline-info"
             className="d-flex p-1 gap-2 justify-content-evenly  align-items-center"
           >
