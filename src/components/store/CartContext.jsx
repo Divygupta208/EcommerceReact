@@ -36,14 +36,51 @@ const INITIAL_AVAILABLE = [
   },
 ];
 
+const INITIAL_CART = [
+  {
+    id: Math.floor(Math.random() * 100),
+    title: "Colors",
+
+    price: 100,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+
+    quantity: 2,
+  },
+
+  {
+    id: Math.floor(Math.random() * 100),
+    title: "Black and white Colors",
+
+    price: 50,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+
+    quantity: 3,
+  },
+
+  {
+    id: Math.floor(Math.random() * 100),
+    title: "Yellow and Black Colors",
+
+    price: 70,
+
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+
+    quantity: 1,
+  },
+];
+
 const CartContext = ({ children }) => {
   const [products, setProducts] = useState(INITIAL_AVAILABLE);
-
+  const [cart, setCart] = useState(INITIAL_CART);
   return (
     <Cart.Provider
       value={{
         products,
         setProducts,
+        cart,
+        setCart,
       }}
     >
       {children}
