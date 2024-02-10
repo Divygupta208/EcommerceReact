@@ -7,13 +7,13 @@ import CartComponent from "../components/CardComponent";
 
 const Root = () => {
   return (
-    <>
+    <div className="root-main">
       <NavbarComponent />
       <Header />
 
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
