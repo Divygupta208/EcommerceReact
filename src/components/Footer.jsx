@@ -5,10 +5,10 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <Navbar data-bs-theme="dark" className="px-5 py-5 footer">
+      <Navbar data-bs-theme="dark" className="px-5 footer">
         <Container>
           <Navbar.Brand href="#home" className="">
-            <h1>The Generics</h1>
+            <h2>The Generics</h2>
           </Navbar.Brand>
           <Nav className="ms-5 gap-5 ">
             <Nav.Link href="#home">
