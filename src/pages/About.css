@@ -1,0 +1,24 @@
+.about-main {
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  margin-top: 16%;
+  background-color: rgb(255, 255, 255);
+}
+.image-about {
+  width: 22%;
+  height: 50%;
+  border-radius: 50pc;
+  margin-right: 20px;
+}
+.about-content {
+  display: flex;
+  margin-left: 11rem;
+  padding-top: 20px;
+  padding-left: 150px;
+  width: 70%;
+  color: grey;
+}
+.heading {
+  margin-left: 40rem;
+}
