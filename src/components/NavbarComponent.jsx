@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Badge, Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import "./Navbar.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Cart } from "./store/CartContext";
@@ -23,15 +24,43 @@ function NavbarComponent() {
     <>
       <Navbar bg="dark" data-bs-theme="dark" fixed="top">
         <Container>
-          <Nav className="mx-auto gap-4 navbar-collapsed">
-            <NavLink to="/">
+          <Nav className="mx-auto gap-5 navbar-collapsed">
+            <NavLink
+              to="/"
+              className={({ isActive }) => {
+                return isActive ? "active" : "inactive";
+              }}
+            >
               <h4>Home</h4>
+              <div className="nav-line"></div>
             </NavLink>
-            <NavLink to="/store">
+
+            <NavLink
+              to="/store"
+              className={({ isActive }) => {
+                return isActive ? "active" : "inactive";
+              }}
+            >
               <h4>Store</h4>
+              <div className="nav-line"></div>
             </NavLink>
-            <NavLink to="/about">
+            <NavLink
+              to="/about"
+              className={({ isActive }) => {
+                return isActive ? "active" : "inactive";
+              }}
+            >
               <h4>About</h4>
+              <div className="nav-line"></div>
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => {
+                return isActive ? "active" : "inactive";
+              }}
+            >
+              <h4>Contact-Us</h4>
+              <div className="nav-line"></div>
             </NavLink>
           </Nav>
           <Button

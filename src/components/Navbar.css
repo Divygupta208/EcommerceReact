@@ -1,0 +1,50 @@
+.active {
+  color: rgb(255, 179, 0);
+  overflow: hidden;
+}
+.active:hover {
+  color: rgb(255, 0, 0);
+}
+
+.inactive {
+  color: azure;
+  overflow: hidden;
+}
+.inactive:hover {
+  color: rgb(255, 255, 182);
+}
+.active:hover .nav-line {
+  background-color: #ffffff;
+  animation: linecurve 1s ease-in-out;
+  height: 2px;
+  transform-origin: 0 0;
+}
+.inactive:hover .nav-line {
+  background-color: #ffffff;
+  animation: linecurve 1s ease-in-out;
+  height: 2px;
+  transform-origin: 0 0;
+}
+
+.nav-line {
+  width: 30px;
+  background-color: black;
+}
+
+@keyframes linecurve {
+  from {
+    transform: translateX(-10px);
+  }
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+  to {
+    transform: translateX(150px);
+  }
+}
