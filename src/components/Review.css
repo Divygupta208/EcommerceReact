@@ -1,0 +1,68 @@
+/* Review.css */
+.review-section {
+  margin-top: 20px;
+  width: 40vw;
+}
+
+.user-reviews {
+  margin-top: 10px;
+}
+
+.user-review {
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.185);
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-review p {
+  margin: 0;
+}
+.user-review img:hover {
+  transform: scale(1.5);
+}
+
+.user-review-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-info {
+  font-size: 12px;
+  color: #000000;
+  font-size: small;
+}
+.review-info span {
+  display: flex;
+}
+
+.review-info p {
+  font-size: large;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+input[type="file"] {
+  margin-bottom: 10px;
+  background-color: #7a7373;
+}
+
+img {
+  width: 4rem;
+  height: 3rem;
+}
+
+button {
+  padding: 8px;
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+}

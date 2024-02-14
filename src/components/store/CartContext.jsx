@@ -4,39 +4,63 @@ export const Cart = createContext();
 
 const INITIAL_AVAILABLE = [
   {
-    id: Math.floor(Math.random() * 100),
-    title: "Album 1",
+    id: 1,
+    title: "Galaxy",
 
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    price: 1000,
+    ratings: 4.5,
+    imageUrl: [
+      "https://m.media-amazon.com/images/I/818VqDSKpCL._SX569_.jpg",
+      "https://m.media-amazon.com/images/I/8155EFAxDzL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/71td5npKu6L._SY741_.jpg",
+      "https://m.media-amazon.com/images/I/71e4JV8PTsL._SY741_.jpg",
+    ],
+    reviews: [{ text: "Great product!", user: "User1", date: "2022-02-14" }],
   },
 
   {
-    id: Math.floor(Math.random() * 100),
-    title: "Album 2",
-
+    id: 2,
+    title: "iPhone",
+    ratings: 4,
     price: 50,
 
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    imageUrl: [
+      "https://m.media-amazon.com/images/I/81fxjeu8fdL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/51brdXeugJL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/712CBkmhLhL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/617JW0DrG8L._SX679_.jpg",
+    ],
+    reviews: [{ text: "Great product!", user: "User1", date: "2022-02-14" }],
   },
 
   {
-    id: Math.floor(Math.random() * 100),
-    title: "Album 3",
+    id: 3,
+    title: "One+",
 
     price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    ratings: 3.5,
+    imageUrl: [
+      "https://m.media-amazon.com/images/I/717JX3femML._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/61nlAS5+y4L._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/61dXJigjlJL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/61I7YQ4fk4L._SX679_.jpg",
+    ],
+    reviews: [{ text: "Great product!", user: "User1", date: "2022-02-14" }],
   },
 
   {
-    id: Math.floor(Math.random() * 100),
-    title: "Album 4",
+    id: 4,
+    title: "RealME-Narzo",
 
     price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    ratings: 4.2,
+    imageUrl: [
+      "https://m.media-amazon.com/images/I/61fd1yUJ6kL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/71tyRMAtVrL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/71sdimiMYKL._SX679_.jpg",
+      "https://m.media-amazon.com/images/I/71gOZ0lcZsL._SX679_.jpg",
+    ],
+    reviews: [{ text: "Great product!", user: "User1", date: "2022-02-14" }],
   },
 ];
 
