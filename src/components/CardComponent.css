@@ -7,3 +7,7 @@
 .card-img {
   overflow: hidden;
 }
+.card-image {
+  width: auto;
+  height: 300px;
+}
