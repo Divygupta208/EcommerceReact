@@ -12,7 +12,7 @@ const CartProduct = ({ item, removeItemHandler }) => {
       key={item.id}
     >
       <span className="d-flex gap-3 col-5 align-items-center image-section">
-        <img src={item.imageUrl} className="cart-image" />
+        <img src={item.imageUrl[0]} className="cart-image" />
         <h6>{item.title}</h6>
       </span>
       <span className="price-section col-3">${item.price}</span>

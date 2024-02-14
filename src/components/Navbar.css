@@ -15,15 +15,13 @@
 }
 .active:hover .nav-line {
   background-color: #ffffff;
-  animation: linecurve 1s ease-in-out;
+  animation: linecurve 1s forwards;
   height: 2px;
-  transform-origin: 0 0;
 }
 .inactive:hover .nav-line {
   background-color: #ffffff;
-  animation: linecurve 1s ease-in-out;
+  animation: linecurve 1s forwards;
   height: 2px;
-  transform-origin: 0 0;
 }
 
 .nav-line {
