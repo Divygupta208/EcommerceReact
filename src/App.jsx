@@ -17,7 +17,7 @@ import LoginPage from "./components/LoginPage";
 import { useContext } from "react";
 import { Cart } from "./components/store/CartContext";
 import ProductDetails from "./components/ProductDetails";
-
+import { loader } from "./components/MusicSection";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,14 +26,7 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       {
         path: "store",
-        loader: () => {
-          const isLoggedIn = !!localStorage.getItem("user");
-
-          if (!isLoggedIn) {
-            return redirect("/login");
-          }
-          return null;
-        },
+        loader: loader(),
         element: <Store />,
       },
       {
