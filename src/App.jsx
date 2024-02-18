@@ -18,9 +18,6 @@ import { useContext } from "react";
 import { Cart } from "./components/store/CartContext";
 import ProductDetails from "./components/ProductDetails";
 
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,9 +26,20 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       {
         path: "store",
+        loader: () => {
+          const isLoggedIn = !!localStorage.getItem("user");
+
+          if (!isLoggedIn) {
+            return redirect("/login");
+          }
+          return null;
+        },
         element: <Store />,
       },
-      { path: "store/:productId", element: <Product /> },
+      {
+        path: "store/:productId",
+        element: <Product />,
+      },
 
       { path: "about", element: <AboutPage /> },
       { path: "contact", element: <Contact /> },
@@ -42,26 +50,13 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "*", element: <Navigate to={"/login"} /> },
 ]);
 
 function App() {
-  const notify = (text) => toast(text);
-
   return (
     <>
       <RouterProvider router={router} />
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 }

@@ -70,16 +70,16 @@ const INITIAL_CART = [];
 const CartContext = ({ children }) => {
   const [products, setProducts] = useState(INITIAL_AVAILABLE);
   const [cart, setCart] = useState(INITIAL_CART);
-
   const initialToken = localStorage.getItem("user");
   const [token, setToken] = useState(initialToken);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [count, setCount] = useState(1);
   const userLoggedIn = !!token;
 
   const handleLogin = (token) => {
     setToken(token);
     setIsLoggedIn(userLoggedIn);
+    console.log(isLoggedIn);
     localStorage.setItem("user", token);
   };
 
@@ -133,6 +133,8 @@ const CartContext = ({ children }) => {
         token,
         handleLogin,
         isLoggedIn,
+        count,
+        setCount,
       }}
     >
       {children}

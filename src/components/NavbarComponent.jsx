@@ -5,11 +5,11 @@ import "./Navbar.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Cart } from "./store/CartContext";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate, redirect } from "react-router-dom";
 import CartComponent from "./CartComponent";
 
 function NavbarComponent() {
-  const { cart } = useContext(Cart);
+  const { cart, isLoggedIn } = useContext(Cart);
   const [showCart, setShowCart] = useState(false);
   const totalQuantity = cart.reduce(
     (total, item) => total + parseInt(item.quantity, 10),

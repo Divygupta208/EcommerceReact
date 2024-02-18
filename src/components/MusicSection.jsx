@@ -6,19 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MusicSection = () => {
-  const { products } = useContext(Cart);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const notify = (text) => toast(text);
-
-  useEffect(() => {
-    const userLoggedIn = localStorage.getItem("user");
-
-    if (userLoggedIn && !isLoggedIn) {
-      setIsLoggedIn(true);
-      notify("User Logged In");
-    }
-  }, [isLoggedIn]);
+  const { products, count, setCount } = useContext(Cart);
 
   return (
     <>
