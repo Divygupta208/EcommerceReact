@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Cart = createContext();
 
@@ -70,6 +71,18 @@ const CartContext = ({ children }) => {
   const [products, setProducts] = useState(INITIAL_AVAILABLE);
   const [cart, setCart] = useState(INITIAL_CART);
 
+  const initialToken = localStorage.getItem("user");
+  const [token, setToken] = useState(initialToken);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const userLoggedIn = !!token;
+
+  const handleLogin = (token) => {
+    setToken(token);
+    setIsLoggedIn(userLoggedIn);
+    localStorage.setItem("user", token);
+  };
+
   const addToCartHandler = (item) => {
     const index = cart.findIndex((p) => p.id === item.id);
 
@@ -117,6 +130,9 @@ const CartContext = ({ children }) => {
         setCart,
         addToCartHandler,
         contactHandler,
+        token,
+        handleLogin,
+        isLoggedIn,
       }}
     >
       {children}

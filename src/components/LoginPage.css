@@ -1,0 +1,58 @@
+.login-main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000dd; /* Dark background color */
+}
+
+.login-form {
+  background-color: #333; /* Darker background for the form */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Box shadow for a subtle lift effect */
+  margin-top: -10rem;
+  width: 25rem;
+  /* Center the form within its container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-main h3 {
+  margin: 400px 400px;
+  color: white;
+  font-size: xx-large;
+}
+/* Input styles */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #444; /* Darker background for inputs */
+  color: #fff; /* Text color */
+}
+
+/* Placeholder text color */
+input::placeholder {
+  color: #aaa;
+}
+
+/* Submit button styles */
+button {
+  background-color: #ff6600; /* Orange button color */
+  color: #fff; /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover effect for the button */
+button:hover {
+  background-color: #e55e00; /* Darker orange on hover */
+}

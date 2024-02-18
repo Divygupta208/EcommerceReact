@@ -62,6 +62,15 @@ function NavbarComponent() {
               <h4>Contact-Us</h4>
               <div className="nav-line"></div>
             </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => {
+                return isActive ? "active" : "inactive";
+              }}
+            >
+              <h4>Log-in</h4>
+              <div className="nav-line"></div>
+            </NavLink>
           </Nav>
           <Button
             onClick={handleShowCart}
