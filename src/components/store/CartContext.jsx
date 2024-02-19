@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export const Cart = createContext();
@@ -71,29 +71,92 @@ const CartContext = ({ children }) => {
   const [products, setProducts] = useState(INITIAL_AVAILABLE);
   const [cart, setCart] = useState(INITIAL_CART);
   const initialToken = localStorage.getItem("user");
+  const intialMail = localStorage.getItem("mail");
+  const [currentUserMail, setCurrentUserMail] = useState(intialMail);
   const [token, setToken] = useState(initialToken);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [count, setCount] = useState(1);
   const userLoggedIn = !!token;
 
-  const handleLogin = (token) => {
+  const handleLogin = async (token, mail) => {
     setToken(token);
-    setIsLoggedIn(userLoggedIn);
-    console.log(isLoggedIn);
+    setCurrentUserMail(mail);
+    setIsLoggedIn(true);
+
     localStorage.setItem("user", token);
+    localStorage.setItem("mail", mail);
   };
 
-  const addToCartHandler = (item) => {
-    const index = cart.findIndex((p) => p.id === item.id);
+  useEffect(() => {
+    fetchCartData();
+  }, []);
 
-    if (index !== -1) {
+  const userMail = currentUserMail?.replace(/[@.]/g, "");
+
+  const fetchCartData = async () => {
+    const response = await fetch(
+      `https://crudcrud.com/api/20535aba17e44fcaaa9e5454dca3d544/cart${userMail}`
+    );
+    const data = await response.json();
+
+    setCart(data);
+  };
+
+  const handleUpdateItem = async (updatedItem, itemId) => {
+    const updatedItemWithoutId = { ...updatedItem };
+    delete updatedItemWithoutId._id;
+
+    const response = await fetch(
+      `https://crudcrud.com/api/20535aba17e44fcaaa9e5454dca3d544/cart${userMail}/${itemId}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(updatedItemWithoutId),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
+
+  const addToCartHandler = async (item) => {
+    const response = await fetch(
+      `https://crudcrud.com/api/20535aba17e44fcaaa9e5454dca3d544/cart${userMail}`
+    );
+
+    const data = await response.json();
+
+    const ind = data.findIndex((p) => p.id === item.id);
+
+    if (ind !== -1) {
+      const updatedItem = {
+        ...data[ind],
+        quantity: data[ind].quantity + 1,
+      };
+
+      const itemId = data[ind]._id;
+
+      handleUpdateItem(updatedItem, itemId);
+
       const updatedCart = cart.map((cartItem) =>
         cartItem.id === item.id
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem
       );
+
       setCart(updatedCart);
     } else {
+      const response = await fetch(
+        `https://crudcrud.com/api/20535aba17e44fcaaa9e5454dca3d544/cart${userMail}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ...item,
+            quantity: 1,
+          }),
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
       setCart([...cart, { ...item, quantity: 1 }]);
     }
   };
@@ -131,6 +194,7 @@ const CartContext = ({ children }) => {
         addToCartHandler,
         contactHandler,
         token,
+        fetchCartData,
         handleLogin,
         isLoggedIn,
         count,

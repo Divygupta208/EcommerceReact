@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 const LoginPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { handleLogin } = useContext(Cart);
+  const { handleLogin, fetchCartData } = useContext(Cart);
   const navigate = useNavigate();
   const token = localStorage.getItem("user");
   const notify = (text) => toast(text);
@@ -34,7 +34,7 @@ const LoginPage = () => {
       if (response.ok) {
         const data = await response.json();
 
-        handleLogin(data.idToken);
+        handleLogin(data.idToken, data.email);
         navigate("/store");
       } else {
         const data = await response.json();

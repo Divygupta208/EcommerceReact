@@ -7,17 +7,12 @@ import {
 } from "react-router-dom";
 import Root from "./pages/Root";
 import Store from "./pages/Store";
-
 import Home from "./pages/Home";
-
 import AboutPage from "./pages/AboutPage";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import LoginPage from "./components/LoginPage";
-import { useContext } from "react";
-import { Cart } from "./components/store/CartContext";
-import ProductDetails from "./components/ProductDetails";
-import { loader } from "./components/MusicSection";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,7 +21,16 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       {
         path: "store",
-        loader: loader(),
+        loader: () => {
+          const userLoggedIn = !!localStorage.getItem("user");
+
+          if (!userLoggedIn) {
+            return redirect("/login");
+          }
+
+          return null;
+        },
+
         element: <Store />,
       },
       {

@@ -4,10 +4,13 @@ import CardComponent from "./CardComponent";
 import { Cart } from "./store/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 const MusicSection = () => {
-  const { products } = useContext(Cart);
+  const { products, fetchCartData } = useContext(Cart);
+
+  useEffect(() => {
+    fetchCartData();
+  }, []);
 
   return (
     <>
@@ -17,7 +20,11 @@ const MusicSection = () => {
         <div className="card-div">
           {products.map((product) => (
             <div className="card-align">
-              <CardComponent className="card" product={product} />
+              <CardComponent
+                className="card"
+                product={product}
+                key={product.id}
+              />
             </div>
           ))}
         </div>
@@ -27,13 +34,3 @@ const MusicSection = () => {
 };
 
 export default MusicSection;
-
-export const loader = () => {
-  const { isLoggedIn } = useContext(Cart);
-
-  if (!isLoggedIn) {
-    return redirect("/login");
-  }
-
-  return null;
-};
